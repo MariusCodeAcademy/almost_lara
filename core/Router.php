@@ -83,6 +83,12 @@ class Router
 
     }
 
+    /**
+     * Renders the page and applies the layout
+     *
+     * @param string $view
+     * @return string|string[]
+     */
     public function renderView(string $view)
     {
         $layout = $this->layoutContent();
@@ -94,6 +100,11 @@ class Router
         //
     }
 
+    /**
+     * Returns the layout HTML content
+     *
+     * @return false|string
+     */
     protected function layoutContent()
     {
         // start buffering
@@ -104,6 +115,12 @@ class Router
 
     }
 
+    /**
+     * Returns only the given page HTML content
+     *
+     * @param $view
+     * @return false|string
+     */
     protected function pageContent($view)
     {
         // start buffering
