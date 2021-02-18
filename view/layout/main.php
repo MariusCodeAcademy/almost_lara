@@ -15,7 +15,9 @@
 <body>
 
 
-{{content}}
+<div class="container">
+    {{content}}
+</div>
 
 
 
