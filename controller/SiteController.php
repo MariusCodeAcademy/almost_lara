@@ -5,44 +5,46 @@ namespace app\controller;
 
 
 use app\core\Application;
+use app\core\Controller;
+use app\core\Request;
 
-class SiteController
+class SiteController extends Controller
 {
     /**
      * This handles Home page get request
      *
      * @return string|string[]
      */
-    public static function home()
+    public function home()
     {
         $params = [
             'name' => "AlmostLara",
             'subtitle' => "This is a nice way to learn PHP"
         ];
 
-        return Application::$app->router->renderView('home', $params);
+        return $this->render('home', $params);
     }
     /**
      * This serves the about form view
      * @return string
      */
-    public static function about()
+    public function about()
     {
         $params = [
             'version' => "1.0.0",
         ];
         // lets render view
-        return Application::$app->router->renderView('about', $params);
+        return $this->render('about', $params);
     }
 
     /**
      * This serves the contact form view
      * @return string
      */
-    public static function contact()
+    public function contact()
     {
         // lets render view
-        return Application::$app->router->renderView('contact');
+        return $this->render('contact');
     }
 
     /**
@@ -50,8 +52,16 @@ class SiteController
      *
      * @return string
      */
-    public static function handleContact()
+    public function handleContact(Request $request)
     {
+        // we user get body method to see user input
+        $body = $request->getBody();
+
+        echo "<pre>";
+        var_dump($body);
+        echo "</pre>";
+        exit;
+
         return "handling form from site controller handle form method";
     }
 }

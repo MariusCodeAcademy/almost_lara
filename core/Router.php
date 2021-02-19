@@ -71,10 +71,6 @@ class Router
         $path = $this->request->getPath();
         $method = $this->request->getMethod();
 
-//        echo "<pre>";
-//        var_dump($this->routes);
-//        echo "</pre>";
-//        exit;
 
         // trying to run a route from routes array
         $callback = $this->routes[$method][$path] ?? false;
@@ -92,8 +88,15 @@ class Router
             return $this->renderView($callback);
         endif;
 
+        // if our callback is array we handle it whith class instance
+        if (is_array($callback)) :
+            $instance = new $callback[0];
+            $callback[0] = $instance;
+        endif;
+
+
         // page dose exsist we call user function
-        return call_user_func($callback);
+        return call_user_func($callback, $this->request);
 
     }
 
