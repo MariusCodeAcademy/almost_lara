@@ -137,10 +137,14 @@ class Router
      */
     protected function pageContent($view, $params)
     {
+//        $params = [
+//            'name' => "AlmostLara",
+//            'subtitle' => "This is a nice way to learn PHP"
+//        ];
         // a smart way of creating variables dinamically
-//        $name = $params['name'];
+        // $name = $params['name'];
         foreach ($params as $key => $value) :
-            $$key = $value;
+            $$key = $value; // name = AlmostLara // $name = AlmostLara
         endforeach;
 
         // start buffering
