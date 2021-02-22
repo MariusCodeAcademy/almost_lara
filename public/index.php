@@ -16,13 +16,13 @@ $config =[
     ]
 ];
 
-echo "<pre>";
-var_dump($config);
-echo "</pre>";
-exit;
+//echo "<pre>";
+//var_dump($config);
+//echo "</pre>";
+//exit;
 
 
-$app = new Application(dirname(__DIR__));
+$app = new Application(dirname(__DIR__), $config);
 
 $app->router->get('/', [SiteController::class, 'home']);
 $app->router->get('/about', [SiteController::class, 'about']);
