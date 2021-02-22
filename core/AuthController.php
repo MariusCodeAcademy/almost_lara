@@ -64,10 +64,27 @@ class AuthController extends Controller
 
             $data['errors']['confirmPasswordErr'] = $this->vld->confirmPassword($data['confirmPassword']);
 
-//            echo "<pre>";
-//            var_dump($data);
-//            echo "</pre>";
-//            exit;
+            // if there are no errors
+            if ($this->vld->ifEmptyArr($data['errors'])) :
+
+
+                // hash password // save way to store pass
+                $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+
+                // create user
+                if ($this->userModel->register($data)) {
+                    // success user added
+                    // set flash msg
+                    flash('register_success', 'You have registered successfully');
+                    // header("Location: " . URLROOT . "/users/login");
+                    redirect('/users/login');
+                } else {
+                    die('Something went wrong in adding user to db');
+                }
+
+            endif;
+
+
 
 
             return $this->render('register', $data);
