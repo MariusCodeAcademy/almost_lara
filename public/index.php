@@ -1,6 +1,7 @@
 <?php
 require_once '../vendor/autoload.php';
 
+use app\controller\PostsController;
 use app\controller\SiteController;
 use app\core\Application;
 use app\core\AuthController;
@@ -40,5 +41,10 @@ $app->router->post('/login', [AuthController::class, 'login']);
 
 $app->router->get('/register', [AuthController::class, 'register']);
 $app->router->post('/register', [AuthController::class, 'register']);
+
+$app->router->get('/posts', [PostsController::class, 'index']);
+
+$app->router->get('/post/{id}', [PostsController::class, 'post']);
+
 
 $app->run();
