@@ -6,11 +6,6 @@ namespace app\core;
 
 class Database
 {
-    // connection variables
-    private $host = DB_HOST;
-    private $user = DB_USER;
-    private $password = DB_PASS;
-    private $dbName = DB_NAME;
 
     // some local properties
     // we store out connecion
@@ -19,10 +14,11 @@ class Database
     private $stmt;
     private $error;
 
-    public function __construct()
+    public function __construct($config)
     {
-        // set dns
-        $dns = "mysql:host=$this->host;dbname=$this->dbName;";
+        $dsn = $config['dsn'];
+        $user = $config['user'];
+        $password = $config['password'];
 
         // set some connection options
         $options = [
@@ -35,7 +31,7 @@ class Database
             // if we have erro here
             // echo 'tyring in db';
             // connect to db
-            $this->dbh = new \PDO($dns, $this->user, $this->password, $options);
+            $this->dbh = new \PDO($dsn, $user, $password, $options);
         } catch (PDOException $e) {
             // we catch error here
             $this->error = $e->getMessage();
