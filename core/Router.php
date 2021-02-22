@@ -125,7 +125,12 @@ class Router
      */
     protected function layoutContent()
     {
-        $layout = Application::$app->controller->layout;
+        if (isset(Application::$app->controller)) :
+            $layout = Application::$app->controller->layout;
+        else :
+            $layout = 'main';
+        endif;
+
         // start buffering
         ob_start();
         include_once Application::$ROOT_DIR . "/view/layout/$layout.php";
@@ -138,6 +143,7 @@ class Router
      * Returns only the given page HTML content
      *
      * @param $view
+     * @param $params
      * @return false|string
      */
     protected function pageContent($view, $params)
