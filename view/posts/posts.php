@@ -1,5 +1,3 @@
-<h1>This is posts</h1>
-
 
 <div class="row">
     <div class="col">
@@ -15,7 +13,7 @@
 </div>
 
 <div class="row">
-    <?php foreach ($data['posts'] as $post) :  ?>
+    <?php foreach ($posts as $post) :  ?>
         <div class="col-md-6">
             <div class="card mb-2">
                 <div class="card-body">
@@ -24,7 +22,7 @@
                     <p class="card-text"><?php echo $post->body ?></p>
                     <a href="<?php echo '/posts/show/' . $post->postId; ?>" class="card-link">Read more</a>
                 </div>
-                <div class="card-footer">Created at: <?php echo $post->created_at ?></div>
+                <div class="card-footer">Created at: <?php echo $post->postCreated ?></div>
             </div>
         </div>
     <?php endforeach; ?>
