@@ -5,12 +5,14 @@ namespace app\controller;
 
 
 use app\core\Controller;
+use app\core\Request;
 
 class PostsController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return $this->render('posts/posts');
+        $params = [];
+        return $this->render('posts/posts', $params);
     }
 
 }
