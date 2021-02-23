@@ -28,6 +28,12 @@ class PostsController extends Controller
         return $this->render('posts/posts', $data);
     }
 
+    public function post()
+    {
+        $data = [];
+        return $this->render('posts/singlePost', $data);
+    }
+
 }
 
 
