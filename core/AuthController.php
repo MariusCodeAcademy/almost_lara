@@ -149,7 +149,7 @@ class AuthController extends Controller
 
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
         unset($_SESSION['user_id']);
         unset($_SESSION['user_email']);
@@ -157,6 +157,7 @@ class AuthController extends Controller
 
         session_destroy();
 
-        redirect('/users/login');
+        $request->redirect('/');
+
     }
 }
