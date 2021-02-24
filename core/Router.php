@@ -89,10 +89,17 @@ class Router
         $path = $this->request->getPath();
         $method = $this->request->method();
 
-//        echo "<pre>";
-//        var_dump($path);
-//        echo "</pre>";
-//        exit;
+        // path = "/post/1" take argument value 1
+        // path = "/post" skip path argument take
+        // extract 1
+
+        $pathArr = explode('/', ltrim($path, '/'));
+
+        if (count($pathArr) > 1) :
+            $path = '/' . $pathArr[0];
+            $urlParam['value'] = $pathArr[1];
+        endif;
+
 
 
         // trying to run a route from routes array
@@ -127,7 +134,7 @@ class Router
                 //     [0] => app\controller\PostsController
 //                    [1] => post
 //                    [urlParamName] => id
-                $urlParamName = $callback['urlParamName'];
+                $urlParam['name'] = $callback['urlParamName'];
                 // make call back array with 2 members
                 array_splice($callback, 2, 1);
             endif;
@@ -136,7 +143,11 @@ class Router
 
 
         // page dose exsist we call user function
-        return call_user_func($callback, $this->request, $urlParamName ?? null);
+//        $urlParam = [
+//            'value' => 32,
+//            'name' => 'id'
+//        ];
+        return call_user_func($callback, $this->request, $urlParam ?? null);
 
     }
 
