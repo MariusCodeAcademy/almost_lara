@@ -63,6 +63,10 @@ class PostsController extends Controller
 
     public function addPost()
     {
+        //check if get or post
+
+        //
+
         return $this->render('posts/addPost');
     }
 
