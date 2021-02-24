@@ -41,7 +41,8 @@ class PostsController extends Controller
             // get post row
             $post = $this->postModel->getPostById($id);
 
-
+            // if there are no such id
+            if ($post === false) return $this->render('_404');
 
 
             // lets get user data by user_id
