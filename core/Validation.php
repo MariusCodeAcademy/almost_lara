@@ -4,14 +4,19 @@
 namespace app\core;
 
 
+use app\model\UserModel;
+
 class Validation
 {
-    private $password;
+    private string $password;
     // private $errors = []
 
 
-    // check if every array value is empty
-    // @return boolean
+    /**
+     * check if every array value is empty
+     * @param array $arr
+     * @return bool
+     */
     public function ifEmptyArr($arr)
     {
         // check if all values of array is empty
@@ -23,22 +28,24 @@ class Validation
         return true;
     }
 
-    public function ifEmptyFieldWithReference(&$data, $field, $fieldDisplayName)
-    {
-        $fieldError = $field . 'Err';
-        // Validate Name
-        if (empty($data[$field])) {
-            // empty field
-            $data['errors'][$fieldError] = "Please enter Your $fieldDisplayName";
-        }
-    }
-
+    /**
+     * If given field is empty we return a string msg
+     *
+     * @param string $field
+     * @param string $msg
+     * @return string
+     */
     public function validateEmpty($field, $msg)
     {
         return empty($field) ? $msg : '';
     }
 
-    // if field is empty we return message, else we return empty string
+    /**
+     *  Validate rules and test for Name.
+     *
+     * @param string $field
+     * @return string
+     */
     public function validateName($field)
     {
         // Validate Name
@@ -49,6 +56,14 @@ class Validation
         return ''; //falsy
     }
 
+
+    /**
+     * Validate rules and test for Email in registration
+     *
+     * @param string $field
+     * @param UserModel $userModel
+     * @return string
+     */
     public function validateEmail($field, &$userModel = null)
     {
         // validate empty
@@ -65,6 +80,13 @@ class Validation
         return '';
     }
 
+    /**
+     * Validate rules and test for Email in login
+     *
+     * @param string $field
+     * @param UserModel $userModel
+     * @return string
+     */
     public function validateLoginEmail($field, &$userModel)
     {
         // validate empty
@@ -79,6 +101,14 @@ class Validation
         return '';
     }
 
+    /**
+     * Validate rules and test for Password
+     *
+     * @param string $passField
+     * @param int $min
+     * @param int $max
+     * @return string
+     */
     public function validatePassword($passField, $min, $max)
     {
         // validate empty
@@ -105,6 +135,14 @@ class Validation
         return '';
     }
 
+
+    /**
+     * Checks if given value is same as previously entered password
+     * using validatePassword
+     *
+     * @param string $repeatField
+     * @return string
+     */
     public function confirmPassword($repeatField)
     {
         // validate empty
