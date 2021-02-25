@@ -43,6 +43,9 @@ class Application
 
     }
 
+    /**
+     * This run our application
+     */
     public function run()
     {
         echo $this->router->resolve();

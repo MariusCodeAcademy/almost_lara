@@ -22,6 +22,12 @@ class AuthController extends Controller
         $this->userModel = new UserModel();
     }
 
+    /**
+     * This enables user login. Handles get an post requests.
+     *
+     * @param Request $request
+     * @return string|string[]
+     */
     public function login(Request $request)
     {
         // have ability to change laout
@@ -74,6 +80,12 @@ class AuthController extends Controller
 
     }
 
+    /**
+     * This validates and adds user to users table.
+     *
+     * @param Request $request
+     * @return string|string[]
+     */
     public function register(Request $request)
     {
         if ($request->isGet()) :
@@ -149,6 +161,11 @@ class AuthController extends Controller
 
     }
 
+    /**
+     * Unset Session values and destroy session + redirect to /
+     *
+     * @param Request $request
+     */
     public function logout(Request $request)
     {
         unset($_SESSION['user_id']);
