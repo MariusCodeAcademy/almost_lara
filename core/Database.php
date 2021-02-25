@@ -120,20 +120,4 @@ class Database
     }
 
 
-
-
-
-
-
-
-
-
-
-    // $name = " ';DROB DATABASE; "
-    // // sql injection
-    // // dbh->query('SELECT * FROM posts WHERE email = :email');
-    // $sql = "INSERT INTO MyGuests (firstname, lastname, email) VALUES ($name, 'Doe', 'john@example.com')";
-    // // use exec() because no results are returned
-    // $conn->exec($sql);
-
 }
