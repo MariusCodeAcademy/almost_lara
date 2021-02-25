@@ -14,6 +14,11 @@ class Controller
 {
     public string $layout = 'main';
 
+    /**
+     * We set layout of our choice from /view/layout/.
+     *
+     * @param string $layout
+     */
     public function setLayout(string $layout)
     {
         $this->layout = $layout;
