@@ -34,11 +34,15 @@ class FormField
 
     public function __toString()
     {
+        $validClass = !empty($this->param['errors'][$this->name."Err"]) ? 'is-invalid' : '';
+        $invalidFiedbackText = $this->param['errors'][$this->name."Err"];
+
+
         return <<<STRING
         <div class="form-group">
             <label for="$this->id">$this->labelName:<sup>*</sup></label>
-            <input type="$this->type" name="$this->name" id="$this->id" class=" form-control form-control-lg" value="">
-            <span class='invalid-feedback'></span>
+            <input type="$this->type" name="$this->name" id="$this->id" class="$validClass form-control form-control-lg" value="{$this->param['name']}">
+            <span class='invalid-feedback'>$invalidFiedbackText</span>
         </div>
 STRING;
 
