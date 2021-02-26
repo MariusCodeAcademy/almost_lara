@@ -12,6 +12,6 @@ This is our mvc framework build from scratch.
 1. run command `composer install`
 1. create mysql database
 1. copy .env_example to .env
-    1. change db name
-    1. change db user
-    1. change db password
+    - change db name
+    - change db user
+    - change db password
