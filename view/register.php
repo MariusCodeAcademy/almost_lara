@@ -5,11 +5,12 @@
             <h2>Create an account</h2>
             <p>Please fill in the form to register with us</p>
             <form action="" method="post">
-                <div class="form-group">
-                    <label for="name">Name:<sup>*</sup></label>
-                    <input type="text" name="name" id="name" class="<?php echo (!empty($errors['nameErr'])) ? 'is-invalid' : ''; ?> form-control form-control-lg" value="<?php echo $name ?>">
-                    <span class='invalid-feedback'><?php echo $errors['nameErr'] ?></span>
-                </div>
+                <?php echo new \app\core\html\FormField('name', 'name', '','Name', '') ?>
+<!--                <div class="form-group">-->
+<!--                    <label for="name">Name:<sup>*</sup></label>-->
+<!--                    <input type="text" name="name" id="name" class="--><?php //echo (!empty($errors['nameErr'])) ? 'is-invalid' : ''; ?><!-- form-control form-control-lg" value="--><?php //echo $name ?><!--">-->
+<!--                    <span class='invalid-feedback'>--><?php //echo $errors['nameErr'] ?><!--</span>-->
+<!--                </div>-->
                 <div class="form-group">
                     <label for="email">Email:<sup>*</sup></label>
                     <input type="text" name="email" id="email" class="<?php echo (!empty($errors['emailErr'])) ? 'is-invalid' : ''; ?> form-control form-control-lg" value="<?php echo $email ?>">
