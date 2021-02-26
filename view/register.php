@@ -5,7 +5,7 @@
             <h2>Create an account</h2>
             <p>Please fill in the form to register with us</p>
             <form action="" method="post">
-                <?php echo new \app\core\html\FormField('name', 'name', '','Name', '') ?>
+                <?php echo new \app\core\html\FormField('name', 'name', '','Name') ?>
 <!--                <div class="form-group">-->
 <!--                    <label for="name">Name:<sup>*</sup></label>-->
 <!--                    <input type="text" name="name" id="name" class="--><?php //echo (!empty($errors['nameErr'])) ? 'is-invalid' : ''; ?><!-- form-control form-control-lg" value="--><?php //echo $name ?><!--">-->

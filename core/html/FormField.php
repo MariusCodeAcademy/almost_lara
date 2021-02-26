@@ -10,7 +10,8 @@ class FormField
     private string $name;
     private string $class;
     private string $labelName;
-    private string $param;
+    private array $param;
+    private string $type = 'text';
 
     /**
      * FormField constructor.
@@ -18,30 +19,29 @@ class FormField
      * @param string $name
      * @param string $class
      * @param string $labelName
-     * @param string $param
+     * @param array $param
      */
-    public function __construct(string $id, string $name, string $class, string $labelName, string $param)
+    public function __construct(string $id, string $name, string $class, string $labelName, string $type = 'text', array $param = [])
     {
         $this->id = $id;
         $this->name = $name;
         $this->class = $class;
         $this->labelName = $labelName;
         $this->param = $param;
+        $this->type = $type;
     }
 
 
     public function __toString()
     {
-        // TODO: Implement __toString() method.
-        ob_start();
-        ?>
+        return <<<STRING
         <div class="form-group">
-            <label for="email">Email:<sup>*</sup></label>
-            <input type="text" name="email" id="email" class=" form-control form-control-lg" value="">
+            <label for="$this->id">$this->labelName:<sup>*</sup></label>
+            <input type="$this->type" name="$this->name" id="$this->id" class=" form-control form-control-lg" value="">
             <span class='invalid-feedback'></span>
         </div>
-<?php
-        return ob_get_clean();
+STRING;
+
 
     }
 
